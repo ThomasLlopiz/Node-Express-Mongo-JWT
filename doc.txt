@@ -1,0 +1,10 @@
+Controllers tiene la logica de las rutas
+Models van los esquemas de las colecciones ej: usuarios
+Middlewares sirve para interceptar rutas y verificar la peticion ej el JWT
+Helpers es para no repetir codigo
+Database conexion a la base de datos
+mongodb+srv://<username>:<password>@cluster0.p9wzs.mongodb.net/?retryWrites=true&w=majority
+import 'dotenv/config' esto va en el archivo principal para que todos los archivos tengan acceso a las variables de entorno
+con el procces.env acedemos a todas las variables del archivo .env
+en NodeJS se necesita importar los archivos con la extencion ej .js
+app.use(express.json()) con esto habilitamos las solicitud en json con express
