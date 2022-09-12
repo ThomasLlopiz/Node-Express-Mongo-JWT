@@ -19,8 +19,17 @@ export const generateRefreshToken = (uid, res) => {
       httpOnly: true,
       secure: !(process.env.MODO === "developer"),
       expires: new Date(Date.now() + expiresIn * 1000),
+      sameSite: "none",
     });
   } catch (error) {
     console.log(error);
   }
+};
+
+export const tokenVerifcationError = {
+  "invalid signature": "La firma del JWT no es valida",
+  "jwt expired": "JWT expirado",
+  "invalid token": "Token no valido",
+  "No Bearer": "Utilizia formato bearer",
+  "jwt malformed": "JWT formato no válido",
 };
