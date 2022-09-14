@@ -1,9 +1,10 @@
 import { Router } from "express";
 import {
-  createLinks,
+  createLink,
   getLink,
   getLinks,
   removeLink,
+  updateLink,
 } from "../controllers/link.controller.js";
 import { requireToken } from "../middlewares/requireUserToken.js";
 import {
@@ -13,8 +14,15 @@ import {
 const router = Router();
 
 router.get("/", requireToken, getLinks);
-router.get("/:id", requireToken, getLink);
-router.post("/", requireToken, bodyLinkValidator, createLinks);
+router.get("/:nanolink", getLink);
+router.post("/", requireToken, bodyLinkValidator, createLink);
 router.delete("/:id", requireToken, paramsLinkValidator, removeLink);
+router.patch(
+  "/:id",
+  requireToken,
+  paramsLinkValidator,
+  bodyLinkValidator,
+  updateLink
+);
 
 export default router;

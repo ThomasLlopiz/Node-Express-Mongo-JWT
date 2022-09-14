@@ -8,7 +8,7 @@ export const paramsLinkValidator = [
 ];
 
 export const bodyLinkValidator = [
-  body("longLink", "formateo link incorrecto")
+  body("longLink", "formato link incorrecto")
     .trim()
     .notEmpty()
     .custom(async (value) => {
@@ -16,6 +16,7 @@ export const bodyLinkValidator = [
         if (!value.startsWith("https://")) {
           value = "https://" + value;
         }
+
         await axios.get(value);
         return value;
       } catch (error) {
