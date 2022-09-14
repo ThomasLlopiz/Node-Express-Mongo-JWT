@@ -1,5 +1,6 @@
-import { tokenVerifcationError } from "../utils/tokenManager.js";
+import { tokenVerificationErrors } from "../utils/tokenManager.js";
 import jwt from "jsonwebtoken";
+
 export const requireRefreshToken = (req, res, next) => {
   try {
     const refreshTokenCookie = req.cookies.refreshToken;
@@ -9,8 +10,6 @@ export const requireRefreshToken = (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
-    return res
-      .status(401)
-      .send({ error: tokenVerifcationError[error.message] });
+    res.status(401).json({ error: tokenVerificationErrors[error.message] });
   }
 };

@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+
 export const generateToken = (uid) => {
   const expiresIn = 60 * 15;
   try {
@@ -26,7 +27,7 @@ export const generateRefreshToken = (uid, res) => {
   }
 };
 
-export const tokenVerifcationError = {
+export const tokenVerificationErrors = {
   "invalid signature": "La firma del JWT no es valida",
   "jwt expired": "JWT expirado",
   "invalid token": "Token no valido",

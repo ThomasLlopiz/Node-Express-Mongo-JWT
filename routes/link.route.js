@@ -9,18 +9,18 @@ import {
 import { requireToken } from "../middlewares/requireUserToken.js";
 import {
   bodyLinkValidator,
-  paramsLinkValidator,
+  paramLinkValidator,
 } from "../middlewares/validationManager.js";
-const router = Router();
 
+const router = Router();
 router.get("/", requireToken, getLinks);
 router.get("/:nanolink", getLink);
 router.post("/", requireToken, bodyLinkValidator, createLink);
-router.delete("/:id", requireToken, paramsLinkValidator, removeLink);
+router.delete("/:id", requireToken, paramLinkValidator, removeLink);
 router.patch(
   "/:id",
   requireToken,
-  paramsLinkValidator,
+  paramLinkValidator,
   bodyLinkValidator,
   updateLink
 );
